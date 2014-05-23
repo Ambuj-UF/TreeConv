@@ -23,6 +23,8 @@
 library(ape)
 bootTree <- read.tree("tree.nex")
 
+valDict <- new.env()
+
 n = 1
 for (val in bootTree){
     valDict[[paste("T", n, sep="")]] = prop.part(val, check.labels=TRUE)
