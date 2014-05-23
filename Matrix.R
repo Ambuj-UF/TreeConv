@@ -23,76 +23,25 @@
 library(ape)
 bootTree <- read.tree("tree.nex")
 
-valDict <- new.env()
-
-for (val in bootTree){listL <- val$tip.label}
-
 n = 1
 for (val in bootTree){
     valDict[[paste("T", n, sep="")]] = prop.part(val, check.labels=TRUE)
     n = n + 1
-    }
-
-numVal <- data.frame(valDict[['T1']][1])
-
-
-uniqueVectorDict <- new.env()
+}
 
 counter = 1
 
-while (counter <= length(valDict)) {
-    uniqueVectorList <- c()
-    for (v1 in valDict[[paste("T", counter, sep="")]]){
-        newpart = ""
-        for (v2 in v1){
-            newpart = paste(newpart, listL[[v2]], sep="_")}
-        uniqueVectorList <- union(uniqueVectorList, newpart)
+while (counter <= length(valDict)){
+    d<-c()
+    for (inval in bootTree[counter]){data <- inval}
+    write.table(toString(data$tip.label), file='test.txt', row.names = FALSE, col.names = FALSE, append = TRUE)
+    for (val in valDict[[paste("T", counter, sep="")]]){d <- union(d, list(val))}
+    for (val in d){
+        write.table(toString(val), file='test.txt', append=TRUE, row.names = FALSE, col.names=FALSE)
+        
     }
-    uniqueVectorDict[[paste("T", counter, sep="")]] <- uniqueVectorList
+    
+    write.table('\n\n', file='test.txt', append=TRUE, row.names = FALSE, col.names=FALSE)
+    
     counter = counter + 1
 }
-
-newVector <- c()
-
-counter = 1
-
-while (counter <= length(valDict)) {
-    newVector <- union(newVector, setdiff(uniqueVectorDict[[paste("T", counter, sep="")]], newVector))
-    counter = counter + 1
-}
-
-
-counter = 1
-
-dfAll <- c()
-
-dfAll <- data.frame(matrix(NA, (nrow=length(uniqueVectorDict))))
-
-for (val in newVector){
-    var <- c()
-    counter = 1
-    while (counter <= length(uniqueVectorDict)){
-        for (inval in uniqueVectorDict[[paste("T", counter, sep="")]])
-        {
-            
-            if (val == inval){
-                flag = 1
-                break
-            }
-            else {flag = 0}
-        }
-        var <- rbind(var, flag)
-        counter = counter + 1
-    }
-    dfAll <- data.frame(var, dfAll)
-}
-
-dfAll = dfAll[,colMeans(is.na(dfAll)) == 0]
-dfAll['var.1'] <- NULL
-
-write.table(dfAll, file="outMat.txt", sep="\t", row.names = FALSE, col.names = FALSE)
-
-
-
-
-
