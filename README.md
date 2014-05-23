@@ -1,6 +1,6 @@
 TreeConv
 ========
-This Program takes bootstrap trees as input and generates a descesion tree on the basis of unique martition matrix
+This Program takes bootstrap trees as input and generates a descesion tree on the basis of unique bipartition matrix
 The depth of tree tells us the convergence level of bootsrap run.
 
 Instructions
