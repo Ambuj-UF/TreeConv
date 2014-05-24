@@ -10,7 +10,7 @@ Step2: Run Rscript Matrix.R
 Step3: Run python MatrixCol.py
 Step4: Run python ID3call.py
 
-(Number of attribute displayed in the tree - 1) is the total depth. 
+Number of attribute displayed in the tree is the total depth. 
 
 Description of the workflow was taken from paper "Grant Brammer and Tiffani L. Williams. Using Decision Trees to Study the Convergence of Phylogenetic Analyses. 2010 IEEE Symposium. DOI: 10.1109/CIBCB.2010.5510326"
 
