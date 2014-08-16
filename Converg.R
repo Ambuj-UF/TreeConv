@@ -19,8 +19,9 @@
 #                                                                                                              #
 ################################################################################################################
 
-
 library(ape)
+
+cat("Extracting unique bipartitions from bootstrap tree file...\n")
 bootTree <- read.tree("tree.nex")
 
 valDict <- new.env()
@@ -47,3 +48,8 @@ while (counter <= length(valDict)){
     
     counter = counter + 1
 }
+
+cat("Creating bipartition matrix...\n")
+system("python ColDR.py")
+cat("Running descesion tree algo...\n")
+system("python desc_tree.py")
