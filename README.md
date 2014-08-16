@@ -5,10 +5,7 @@ The depth of tree tells us the convergence level of bootsrap run.
 
 Instructions
 
-Step1: Rename bootstrap tree file as "tree.nex"
-Step2: Run Rscript Matrix.R
-Step3: Run python MatrixCol.py
-Step4: Run python ID3call.py
+Run "Rscript Converg.R"
 
 Number of attribute displayed in the tree is the total depth. 
 
