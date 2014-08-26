@@ -1,8 +1,6 @@
 # This program executes ID3 machine learning algorithm to obtain the depth of descesion tree from matrix data produced
 # by running MatrixCol.py program.
-# The standard ID3 source code was taken from the blog page (http://www.jdxyw.com/?p=2095) of 
-# Yongwei Xing, SharePoint/MOSS developer at Shanghai,China.  
-# Few additional modifications were conducted to make it suitable for our program
+
 
 from string import split
 import math
